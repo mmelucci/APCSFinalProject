@@ -7,6 +7,6 @@
 5/26
 Matt created the classes, instance variables, and method headers, along with comments on each method and the specifics of their function. Also, structured the main game view with the number of bricks and displayed a map filled with bricks as a basic template.
 Philip
-
+Philip Created and finished brick class working with the outline, using final variables so that we do not have to tediously change all of the values if we decided to change our max strength etc.
 5/27
 We primarily discussed our next steps in the breakout room and solidified the division of work, reviewing the skeleton of the project. Since Matt worked more on the prototype, Philip took one more class to code to balance the work. Matt will work on the Ball class and Round class, while Philip will complete the Brick, Multiplier, and Ball class. Then, we will both put together the main Ballz game loop to test for the demo. After dividing up the work, we continued to discuss the function of each method prior to starting the code for the other classes.
