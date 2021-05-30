@@ -5,13 +5,16 @@ public class Multiplier {
    row=r;
    col=c;
   }
-
+void advance(){
+  //moves bricks down by one row when the ball reaches the botttom
+  row++;
+  }
   float getX(){
-     return width/BRICKS_PER_ROW*col;
+     return width/Ballz.BRICKS_PER_ROW*col;
   }
 
   float getY(){
-        return width/BRICKS_PER_ROW*row;
+     return width/Ballz.BRICKS_PER_ROW*row;
   }
 
 }
