@@ -2,10 +2,10 @@ public class Brick {
   int row, col;
   color c;
   int strength;
-  final int BRICKS_PER_ROW=5;
+  final static int BRICKS_PER_ROW=5;
   final color FULL_HEALTH_COLOR=color(255, 0, 0);
   final color NO_HEALTH_COLOR=color(0, 255, 0);
-  final int MAX_HEALTH=15;
+  final static int MAX_HEALTH=15;
   /*Constructor for brick in position row = r and column = c
    sets x and y where the brick will be displayed; sets initial strength and color*/
   Brick(int r, int c, int strength) {

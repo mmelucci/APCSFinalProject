@@ -1,19 +1,17 @@
 public class Multiplier {
   int row, col;
-  float x, y;
 
   Multiplier(int r, int c){
-        // code here
+   row=r;
+   col=c;
   }
 
   float getX(){
-      // code here
-      return 0;
+     return width/BRICKS_PER_ROW*col;
   }
 
   float getY(){
-        // code here
-        return 0;
+        return width/BRICKS_PER_ROW*row;
   }
 
 }
