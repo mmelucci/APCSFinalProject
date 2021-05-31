@@ -4,7 +4,7 @@ public class Brick {
   int strength;
   final color FULL_HEALTH_COLOR=color(255, 0, 0);
   final color NO_HEALTH_COLOR=color(0, 255, 0);
-  final static int MAX_HEALTH=15;
+  final static int MAX_HEALTH=40;
   
   /*Constructor for brick in position row = r and column = c
    sets x and y where the brick will be displayed; sets initial strength and color*/

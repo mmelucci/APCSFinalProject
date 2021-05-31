@@ -34,8 +34,9 @@ public class Ball {
         
         if ((x+dx>brickX && x+dx<brickX+BRICK_WIDTH) &&     //ball collides with brick - TBD calculate which side teh brick is hit from and make ball bounce
             (y+dy>brickY && y+dy<brickY+BRICK_WIDTH) ) {
-          if (b.hit()) //update brick with hit and remove from map if done
+          if (b.hit()) {//update brick with hit and remove from map if done
             bmap.remove(i);
+          }
         }
       }
   }

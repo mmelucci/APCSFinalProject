@@ -2,12 +2,14 @@ final static int BRICKS_PER_ROW=7;
 final static int NUM_ROWS=9;
 final static int BRICK_WIDTH=70;
 final static int BRICK_GAP=10;
+final static int BALLS_DELAY=7; //frames between subsequent ball launches
 ArrayList<Brick> bricks; // all bricks
 ArrayList<Multiplier> mults; // all multipliers
 ArrayList<Ball> balls; // all balls
 int startX = 285; // position of launch
 int currentLevel; //current level
 int gameView = 0;
+int framesToNextLaunch = BALLS_DELAY;
 // 0: Launch Screen
 // 1: Game Screen
 // 2: Gameover Screen (LATER)
@@ -18,8 +20,11 @@ void setupGame() {
   mults=new ArrayList<Multiplier>();
   balls=new ArrayList<Ball>();
   currentLevel=0;
-  Ball first=new Ball(startX);
-  balls.add(first);
+  
+  for (int i=0;i<10;i++){ //TEMP only for test. Scaled up tp 50+ balls with no lag! Will be 1 ball only at start
+    Ball first=new Ball(startX);
+    balls.add(first);
+  }
 }
 
 /* Shifts all bricks down one row, adds a row or random bricks at row 1. The strength of the bricks created should be >= level
@@ -36,7 +41,7 @@ boolean addRow() {
   }
    
     for (int i=0;i<BRICKS_PER_ROW;i++){
-      Brick test=new Brick(1,i,i);
+      Brick test=new Brick(1,i,(i+1)*5);
       bricks.add(test);
       
     }
@@ -87,10 +92,12 @@ void launchScreen() {
          b.display();
     }
     
+    framesToNextLaunch = BALLS_DELAY;
+    
     //TBD HERE we need to take care of aim using mouse input, setting the initial direction of launch of all "readyToLaunch" balls 
     for (Ball b: balls){
         b.setLaunchVector(-QUARTER_PI, 10);  //TEMP - will be set with aim controls
-        b.activate();
+        //b.activate();
     }
     gameView = 1; // start balls animation
     
@@ -115,8 +122,21 @@ void activeScreen() {
          b.display();
        }
      }
-  
-  
+     
+     if (framesToNextLaunch == 0){
+       for (Ball b: balls){
+         if (b.isReadyToLaunch()){
+           b.move();
+           b.activate();
+           b.checkCollision(bricks);
+           b.display();
+           framesToNextLaunch = BALLS_DELAY;
+           break;
+         }
+       }
+     }
+     framesToNextLaunch--; //decrease the counter of frames in between subsequent ball launches
+
   //delay (500); // TEMP to see new rows added
   //if (addRow())
   //  gameView = 2 ; //GAME OVER screen
