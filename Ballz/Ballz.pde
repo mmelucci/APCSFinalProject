@@ -40,7 +40,7 @@ boolean addRow() {
     m.advance();
   }
    
-    for (int i=0;i<BRICKS_PER_ROW;i++){
+    for (int i=0;i<BRICKS_PER_ROW;i++){ //TBD this will have to randomly create the new row with a mix of bricks of different strength and some multiplier
       Brick test=new Brick(1,i,(i+1)*5);
       bricks.add(test);
       
@@ -104,7 +104,7 @@ void launchScreen() {
 }
 
 void activeScreen() {
-  /* Here we are gonna have to implement all the bouncing, hitting and multiplying action.
+  /* Here we implement all the bouncing, hitting and multiplying action.
    When all the balls get to the bottom of the screen the round ends by setting gameView = 0 that
    triggers launchScreen()
    */

@@ -32,12 +32,29 @@ public class Ball {
         float brickX = b.getX();
         float brickY = b.getY();
         
-        if ((x+dx>brickX && x+dx<brickX+BRICK_WIDTH) &&     //ball collides with brick - TBD calculate which side teh brick is hit from and make ball bounce
-            (y+dy>brickY && y+dy<brickY+BRICK_WIDTH) ) {
-          if (b.hit()) {//update brick with hit and remove from map if done
-            bmap.remove(i);
-          }
+        if ((brickX < x) && (x < brickX+BRICK_WIDTH)) {// ball on the vertical of the brick
+           if ((abs(y-brickY)<BALL_RADIUS) || //collision on top edge OR
+               (abs(brickY+BRICK_WIDTH - y) < BALL_RADIUS)){  // collision on bottom edge
+             dy*= -1; //revert vertical component of velocity to bounce off
+             if (b.hit()) //update brick with hit and remove from map if done
+                bmap.remove(i);
+           }
         }
+        if ((brickY < y) && (y < brickY+BRICK_WIDTH)) {// ball on the horizontal of the brick
+           if ((abs(x-brickX)<BALL_RADIUS) || //collision on left edge OR
+               (abs(brickX+BRICK_WIDTH - x) < BALL_RADIUS)){  // collision on right edge
+             dx*= -1; //revert horizontal component of velocity to bounce off
+             if (b.hit()) //update brick with hit and remove from map if done
+                bmap.remove(i);
+           }
+        }
+        
+        //if ((x+dx>brickX && x+dx<brickX+BRICK_WIDTH) &&     //ball collides with brick - TBD calculate which side teh brick is hit from and make ball bounce
+        //    (y+dy>brickY && y+dy<brickY+BRICK_WIDTH) ) {
+        //  if (b.hit()) {//update brick with hit and remove from map if done
+        //    bmap.remove(i);
+        //  }
+        //}
       }
   }
 
