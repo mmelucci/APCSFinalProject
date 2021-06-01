@@ -121,6 +121,9 @@ void activeScreen() {
          b.checkCollision(bricks);
          b.display();
        }
+       else {
+         b.display();
+       }
      }
      
      if (framesToNextLaunch == 0){

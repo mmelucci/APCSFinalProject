@@ -22,7 +22,9 @@ public class Ball {
       x += dx;
       y += dy;
       if (x >= width - BALL_RADIUS || x <= BALL_RADIUS) dx *= -1;
-      if (y >= height - BALL_RADIUS || y <= BALL_RADIUS) dy *= -1; //TBD when ball reaches bottom it stops there and becomes inactive
+      if (y <= BALL_RADIUS) dy *= -1; 
+      if (y >= height - BALL_RADIUS) // reached the bottom of screen
+        deActivate();
   }
 
   void checkCollision(ArrayList<Brick> bmap){
@@ -74,6 +76,10 @@ public class Ball {
   void activate(){
     active = true;
     readyToLaunch = false;
+  }
+  
+  void deActivate(){
+    active = false;
   }
   
   //void checkCollision(ArrayList<Multiplier> m){
