@@ -3,15 +3,16 @@ final static int NUM_ROWS=9;
 final static int BRICK_WIDTH=70;
 final static int BRICK_GAP=10;
 final static int BALLS_DELAY=7; //frames between subsequent ball launches
+final static int LAUNCH_SCREEN = 0;
+final static int ACTIVE_SCREEN = 1;
+final static int GAMEOVER_SCREEN = 2;
 ArrayList<Brick> bricks; // all bricks
 ArrayList<Multiplier> mults; // all multipliers
 ArrayList<Ball> balls; // all balls
 float startX = 285; // position of launch
 int currentLevel; //current level
-int gameView = 0;
-// 0: Launch Screen
-// 1: Game Screen
-// 2: Gameover Screen (LATER)
+int gameView = LAUNCH_SCREEN;
+
 int framesToNextLaunch = 0;
 boolean firstBallDone;
 
@@ -58,12 +59,12 @@ void setup() {
 void draw() {
   background(0);
   // Display the contents of the current screen
-  if (gameView == 0) {
+  if (gameView == LAUNCH_SCREEN) {
     launchScreen();
-  } else if (gameView == 1) {
+  } else if (gameView == ACTIVE_SCREEN) {
     activeScreen();
   }
-  else if (gameView == 2) {
+  else if (gameView == GAMEOVER_SCREEN) {
     gameOverScreen();
   }
 }
@@ -74,7 +75,7 @@ void mouseReleased() {
   for (Ball b: balls){ // set launch vector for all balls
       b.setLaunchVector(shootAngle, 10);
   }
-  gameView = 1; // switch to game active screen that will launch and move the balls
+  gameView = ACTIVE_SCREEN; // switch to game active screen that will launch and move the balls
 }
 
 
@@ -163,11 +164,11 @@ void activeScreen() {
      
      if (!anyBallActive){ // the round is done -> add a row for next roundswitch to launch screen
          if(addRow()){
-            gameView = 2; //Game is over
+            gameView = GAMEOVER_SCREEN; //Game is over
             return;
          }
          currentLevel++; // increment score
-         gameView = 0; //switch to launch screen
+         gameView = LAUNCH_SCREEN; //switch to launch screen
      }
 
   //delay (500); // TEMP to see new rows added
