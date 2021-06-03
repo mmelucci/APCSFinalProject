@@ -23,8 +23,13 @@ public class Ball {
       y += dy;
       if (x >= width - BALL_RADIUS || x <= BALL_RADIUS) dx *= -1;
       if (y <= BALL_RADIUS) dy *= -1; 
-      if (y >= height - BALL_RADIUS) // reached the bottom of screen
+      if (y >= height - BALL_RADIUS){ // reached the bottom of screen
         deActivate();
+        if (!firstBallDone){// if it is the first ball to reach the bottom
+            startX = x; // set the startX for next round
+            firstBallDone = true; 
+        }
+      }
   }
 
   void checkCollision(ArrayList<Brick> bmap){
@@ -80,6 +85,10 @@ public class Ball {
   
   void deActivate(){
     active = false;
+  }
+  
+  void readyToLaunch(){
+    readyToLaunch = true;
   }
   
   //void checkCollision(ArrayList<Multiplier> m){
