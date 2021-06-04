@@ -40,8 +40,9 @@ public class Brick {
   void display() {
     fill(c);
     rect (getX(),getY(),BRICK_WIDTH,BRICK_WIDTH);
-    textSize(25);
-    text(1,getX(),getY());
+    textSize(24);
+    fill(0);
+    text(strength, getX()+BRICK_WIDTH/3, getY() + BRICK_WIDTH/8*5);
     //@PVM TBD need to write the current strength in the middle of the brick, with a visible color
   }
 
