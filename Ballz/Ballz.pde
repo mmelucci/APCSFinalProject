@@ -12,6 +12,7 @@ final static float MULT_DENSITY= .8/(BRICKS_PER_ROW * (1-BRICKS_DENSITY));
 ArrayList<Brick> bricks; // all bricks
 ArrayList<Multiplier> mults; // all multipliers
 ArrayList<Ball> balls; // all balls
+ArrayList<Ball> newBalls; //balls to be added at end of round
 float startX = 285; // position of launch
 int currentLevel; //current level
 int gameView = LAUNCH_SCREEN;
@@ -23,6 +24,7 @@ void setupGame() {
   bricks=new ArrayList<Brick>();
   mults=new ArrayList<Multiplier>();
   balls=new ArrayList<Ball>();
+  newBalls=new ArrayList<Ball>();
   currentLevel=1;
   
   addRow(); //add first row 
@@ -169,7 +171,7 @@ void activeScreen() {
          if (b.isReadyToLaunch()){
            b.move();
            b.activate();
-           b.checkCollision(bricks);
+           b.checkCollision(bricks,mults,newBalls);
            b.display();
            framesToNextLaunch = BALLS_DELAY;
            break;
@@ -182,7 +184,7 @@ void activeScreen() {
      for (Ball b: balls){
        if (b.isActive()){
          b.move();
-         b.checkCollision(bricks);
+         b.checkCollision(bricks,mults,newBalls);
          b.display();
          anyBallActive = true;
        }
@@ -198,6 +200,8 @@ void activeScreen() {
          }
          currentLevel++; // increment score
          gameView = LAUNCH_SCREEN; //switch to launch screen
+         balls.addAll(newBalls);
+         newBalls.clear();
      }
 
   //delay (500); // TEMP to see new rows added

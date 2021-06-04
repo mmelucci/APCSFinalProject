@@ -32,7 +32,7 @@ public class Ball {
       }
   }
 
-  void checkCollision(ArrayList<Brick> bmap){
+  void checkCollision(ArrayList<Brick> bmap, ArrayList<Multiplier> mmap,ArrayList<Ball> balls){
       // code to be added here
       for(int i=0; i<bmap.size();i++){
         Brick b = bmap.get(i);
@@ -44,7 +44,7 @@ public class Ball {
                (abs(brickY+BRICK_WIDTH - y) < BALL_RADIUS)){  // collision on bottom edge
              dy*= -1; //revert vertical component of velocity to bounce off
              if (b.hit()) //update brick with hit and remove from map if done
-                bmap.remove(i);
+                bmap.remove(i--);
            }
         }
         if ((brickY < y) && (y < brickY+BRICK_WIDTH)) {// ball on the horizontal of the brick
@@ -52,7 +52,7 @@ public class Ball {
                (abs(brickX+BRICK_WIDTH - x) < BALL_RADIUS)){  // collision on right edge
              dx*= -1; //revert horizontal component of velocity to bounce off
              if (b.hit()) //update brick with hit and remove from map if done
-                bmap.remove(i);
+                bmap.remove(i--);
            }
         }
         
@@ -62,6 +62,17 @@ public class Ball {
         //    bmap.remove(i);
         //  }
         //}
+      }
+      for(int i=0; i<mmap.size();i++){
+        Multiplier m = mmap.get(i);
+        float MultiplierX = m.getX();
+        float MultiplierY = m.getY();
+        
+        if (dist (x,y,MultiplierX,MultiplierY)<BALL_RADIUS+BRICK_WIDTH/4) {// ball on the vertical of the brick
+                Ball newball= new Ball(width/2);
+                balls.add(newball);
+                mmap.remove(i--);
+           }
       }
   }
 
