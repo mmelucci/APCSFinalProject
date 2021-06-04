@@ -112,6 +112,7 @@ void launchScreen() {
       stroke(125);
       strokeWeight(3);
       line(startX,height - BALL_RADIUS, mouseX, mouseY);
+      noStroke(); // we do not want borders on bricks, balls etc. 
     }  
 
     
@@ -197,13 +198,13 @@ void keyPressed() { //TEMP restarts the game. We can have different actions impl
 
 /* TO BE DONE: 
   - add the strength counter in the middle of blocks
-  - clean up stroke in all displays for map objects
+  V clean up stroke in all displays for map objects
   - complete multiplier class
   - tune color scheme if needed (now tweaked for 50 levels max red color)
   - implement multiplier effect
     - add animation for new balls when collected
-  - adjust the startX to where the first ball drops
-  - set x for all readyToLaunch balls to the global startX at the beginning of the launchScreen
+  V adjust the startX to where the first ball drops
+  V set x for all readyToLaunch balls to the global startX at the beginning of the launchScreen
   - randomize row creation
     - add animation to collect all balls to the startX position at the beginning of launchScreen
   - tune gameplay with random elements
