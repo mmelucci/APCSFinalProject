@@ -87,8 +87,9 @@ public class Ball {
     active = false;
   }
   
-  void readyToLaunch(){
+  void readyToLaunch(){ // prepare the ball for launch
     readyToLaunch = true;
+    x = startX;
   }
   
   //void checkCollision(ArrayList<Multiplier> m){
