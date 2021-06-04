@@ -1,7 +1,7 @@
 final static int BRICKS_PER_ROW=7;
 final static int NUM_ROWS=9;
 final static int BRICK_WIDTH=70;
-final static int BRICK_GAP=10;
+final static int BRICK_GAP=8;
 final static int BALLS_DELAY=7; //frames between subsequent ball launches
 final static int LAUNCH_SCREEN = 0;
 final static int ACTIVE_SCREEN = 1;
@@ -26,7 +26,7 @@ void setupGame() {
   
   addRow(); //add first row 
   
-  for (int i=0;i<10;i++){ //TEMP only for test. Scaled up tp 50+ balls with no lag! Will be 1 ball only at start
+  for (int i=0;i<10;i++){ //TEMP only for test. Scaled up tp 50+ balls with no lag! Will be 1 ball only at start once we have multipliers
     Ball first=new Ball(startX);
     balls.add(first);
   }
@@ -118,6 +118,7 @@ void launchScreen() {
     //Prepare for new round of balls by setting all of them to "readyToLaunch"
     for (Ball b: balls){
       b.readyToLaunch();
+      b.display();
     }
     firstBallDone = false; // start of the round, initialize first ball down flag that will determine next startX
     
@@ -212,18 +213,19 @@ void keyPressed() { //TEMP restarts the game. We can have different actions impl
 
 
 /* TO BE DONE: 
-  - add the strength counter in the middle of blocks
+  V add the strength counter in the middle of blocks
   V clean up stroke in all displays for map objects
   - complete multiplier class
   - tune color scheme if needed (now tweaked for 50 levels max red color)
   - implement multiplier effect
   V adjust the startX to where the first ball drops
   V set x for all readyToLaunch balls to the global startX at the beginning of the launchScreen
-  - randomize row creation
+  V randomize row creation
   - tune gameplay with random elements
   - implement "fast forward" button
   - add sound??
   - handle the case when gameover happens because a multiplier reached bottom screen
   - add animation to collect all balls to the startX position at the beginning of launchScreen
   - add animation for new balls when collected
+  - add score on the top
  */
