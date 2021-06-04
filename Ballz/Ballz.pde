@@ -6,6 +6,8 @@ final static int BALLS_DELAY=7; //frames between subsequent ball launches
 final static int LAUNCH_SCREEN = 0;
 final static int ACTIVE_SCREEN = 1;
 final static int GAMEOVER_SCREEN = 2;
+final static int MAX_MULT = 3; // max number of multipliers per row
+final static float BRICKS_DENSITY = 0.5; // (0-1.0] density of bricks in new rows
 ArrayList<Brick> bricks; // all bricks
 ArrayList<Multiplier> mults; // all multipliers
 ArrayList<Ball> balls; // all balls
@@ -43,11 +45,24 @@ boolean addRow() {
     m.advance();
   }
    
-    for (int i=0;i<BRICKS_PER_ROW;i++){ //TBD this will have to randomly create the new row with a mix of bricks of different strength and some multiplier
-      Brick test=new Brick(1,i,(i+1)*5);
-      bricks.add(test);
+   
+  for (int i=0;i<BRICKS_PER_ROW;i++){ //randomly create the new row with a mix of bricks of different strength and some multiplier
+      float r = random(1);
+      Brick newBrick;
+      if (r<BRICKS_DENSITY) { // place a brick - TBD or a multiplier, up to MAX_MULT
+          float s = random(1); 
+          if (s < BRICKS_DENSITY/2) // to be tweaked, hardest if this threshold is higher
+             newBrick=new Brick(1,i, currentLevel*2); // double strength
+          else
+             newBrick=new Brick(1,i, currentLevel);  // normal strength for this level
+          bricks.add(newBrick);
+      }
+  }
+    //for (int i=0;i<BRICKS_PER_ROW;i++){ //TBD this will have to randomly create the new row with a mix of bricks of different strength and some multiplier
+    //  Brick test=new Brick(1,i,(i+1)*5);
+    //  bricks.add(test);
       
-    }
+    //}
   return false;
 }
 
@@ -202,12 +217,13 @@ void keyPressed() { //TEMP restarts the game. We can have different actions impl
   - complete multiplier class
   - tune color scheme if needed (now tweaked for 50 levels max red color)
   - implement multiplier effect
-    - add animation for new balls when collected
   V adjust the startX to where the first ball drops
   V set x for all readyToLaunch balls to the global startX at the beginning of the launchScreen
   - randomize row creation
-    - add animation to collect all balls to the startX position at the beginning of launchScreen
   - tune gameplay with random elements
   - implement "fast forward" button
   - add sound??
+  - handle the case when gameover happens because a multiplier reached bottom screen
+  - add animation to collect all balls to the startX position at the beginning of launchScreen
+  - add animation for new balls when collected
  */
