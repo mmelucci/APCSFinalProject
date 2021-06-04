@@ -2,8 +2,8 @@ public class Brick {
   int row, col;
   color c;
   int strength;
-  final color FULL_HEALTH_COLOR=color(255, 0, 0);
-  final color NO_HEALTH_COLOR=color(0, 255, 0);
+  final color FULL_HEALTH_COLOR=color(172, 5, 121);
+  final color NO_HEALTH_COLOR=color(184,185 ,55 );
   final static int MAX_HEALTH=40;
   
   /*Constructor for brick in position row = r and column = c
@@ -43,7 +43,7 @@ public class Brick {
     textSize(24);
     fill(0);
     text(strength, getX()+BRICK_WIDTH/3, getY() + BRICK_WIDTH/8*5);
-    //@PVM TBD need to write the current strength in the middle of the brick, with a visible color
+    
   }
 
   float getX() {

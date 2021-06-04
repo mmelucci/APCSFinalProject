@@ -18,7 +18,10 @@ void advance(){
   }
   
   void display () {//Display a multiplier at the center of the square at col, row
-    //TBD code here
+     fill(255);
+    ellipse (getX(),getY(),BRICK_WIDTH/2,BRICK_WIDTH/2);
+ 
+    
   }
 
 }
