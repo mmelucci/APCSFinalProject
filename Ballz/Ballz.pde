@@ -8,6 +8,7 @@ final static int ACTIVE_SCREEN = 1;
 final static int GAMEOVER_SCREEN = 2;
 final static int MAX_MULT = 3; // max number of multipliers per row
 final static float BRICKS_DENSITY = 0.5; // (0-1.0] density of bricks in new rows
+final static float MULT_DENSITY= .8/(BRICKS_PER_ROW * (1-BRICKS_DENSITY));
 ArrayList<Brick> bricks; // all bricks
 ArrayList<Multiplier> mults; // all multipliers
 ArrayList<Ball> balls; // all balls
@@ -49,13 +50,20 @@ boolean addRow() {
   for (int i=0;i<BRICKS_PER_ROW;i++){ //randomly create the new row with a mix of bricks of different strength and some multiplier
       float r = random(1);
       Brick newBrick;
-      if (r<BRICKS_DENSITY) { // place a brick - TBD or a multiplier, up to MAX_MULT
+      if (r<BRICKS_DENSITY) { // place a brick
           float s = random(1); 
           if (s < BRICKS_DENSITY/2) // to be tweaked, hardest if this threshold is higher
              newBrick=new Brick(1,i, currentLevel*2); // double strength
           else
              newBrick=new Brick(1,i, currentLevel);  // normal strength for this level
           bricks.add(newBrick);
+      }
+      else {
+         r = random(1);
+         if (r<MULT_DENSITY) { //place a MULT
+          Multiplier newMult = new Multiplier(1,i); //makes a mult
+          mults.add (newMult);
+         } 
       }
   }
     //for (int i=0;i<BRICKS_PER_ROW;i++){ //TBD this will have to randomly create the new row with a mix of bricks of different strength and some multiplier
@@ -113,6 +121,8 @@ void launchScreen() {
     //else {  // draw map for new round
       for (Brick b: bricks)
          b.display();
+        for (Multiplier m: mults)
+       m.display();
     //}
     
     //Prepare for new round of balls by setting all of them to "readyToLaunch"
