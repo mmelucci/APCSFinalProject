@@ -10,7 +10,6 @@ public class Ball {
     y = 790;
     active = false;
     readyToLaunch = true;
-      // code to be added here
   }
 
   void setLaunchVector(float angle, float speed){
@@ -32,7 +31,7 @@ public class Ball {
       }
   }
 
-  void checkCollision(ArrayList<Brick> bmap, ArrayList<Multiplier> mmap,ArrayList<Ball> balls){
+  void checkCollision(ArrayList<Brick> bmap, ArrayList<Multiplier> mmap, ArrayList<Ball> balls){
       // code to be added here
       for(int i=0; i<bmap.size();i++){
         Brick b = bmap.get(i);
@@ -55,13 +54,6 @@ public class Ball {
                 bmap.remove(i--);
            }
         }
-        
-        //if ((x+dx>brickX && x+dx<brickX+BRICK_WIDTH) &&     //ball collides with brick - TBD calculate which side teh brick is hit from and make ball bounce
-        //    (y+dy>brickY && y+dy<brickY+BRICK_WIDTH) ) {
-        //  if (b.hit()) {//update brick with hit and remove from map if done
-        //    bmap.remove(i);
-        //  }
-        //}
       }
       for(int i=0; i<mmap.size();i++){
         Multiplier m = mmap.get(i);
@@ -102,9 +94,6 @@ public class Ball {
     readyToLaunch = true;
     x = startX;
   }
-  
-  //void checkCollision(ArrayList<Multiplier> m){
-  //  // code to be added here
-  //}
+
 
 }

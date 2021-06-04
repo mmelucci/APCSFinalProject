@@ -6,7 +6,7 @@ public class Multiplier {
    col=c;
   }
 void advance(){
-  //moves bricks down by one row when the ball reaches the botttom
+  //moves multiplier down by one row when the ball reaches the botttom
   row++;
   }
   float getX() {

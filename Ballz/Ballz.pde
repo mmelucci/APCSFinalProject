@@ -29,10 +29,10 @@ void setupGame() {
   
   addRow(); //add first row 
   
-  for (int i=0;i<10;i++){ //TEMP only for test. Scaled up tp 50+ balls with no lag! Will be 1 ball only at start once we have multipliers
-    Ball first=new Ball(startX);
-    balls.add(first);
-  }
+ // for (int i=0;i<1;i++){ //TEMP only for test. Scaled up tp 50+ balls with no lag! Will be 1 ball only at start once we have multipliers
+  Ball first=new Ball(startX);
+  balls.add(first);
+ // }
 }
 
 /* Shifts all bricks down one row, adds a row or random bricks at row 1. The strength of the bricks created should be >= level
@@ -107,25 +107,11 @@ void mouseReleased() {
 
 
 void launchScreen() {
-
-  // THIS JUST DISPLAYS THE WHOLE BRICKS MAP - TEMPORARY
-  //for (int r = 1; r< 9; r++) {
-  //  for (int c=0; c<7; c++) {
-  //    fill(50);
-  //    rect(10+c*80, 10+r*80, 70, 70); // Use this formula in Brick class to calculate x,y from column and row of brick
-  //    }
-  //  }
-  
-    //if(addRow()){
-    //  gameView = 2; //Game is over
-    //  return;
-    //}
-    //else {  // draw map for new round
-      for (Brick b: bricks)
+    // Build Map with current bricks and ball multipliers
+    for (Brick b: bricks)
          b.display();
-        for (Multiplier m: mults)
+    for (Multiplier m: mults)
        m.display();
-    //}
     
     //Prepare for new round of balls by setting all of them to "readyToLaunch"
     for (Ball b: balls){
@@ -142,14 +128,6 @@ void launchScreen() {
       line(startX,height - BALL_RADIUS, mouseX, mouseY);
       noStroke(); // we do not want borders on bricks, balls etc. 
     }  
-
-    
-    //TBD HERE we need to take care of aim using mouse input, setting the initial direction of launch of all "readyToLaunch" balls 
-    //for (Ball b: balls){
-    //  b.setLaunchVector(-QUARTER_PI, 10);  //TEMP - will be set with aim controls
-    //}
-    //gameView = 1; // start balls animation
-    
 }
 
 void activeScreen() {
@@ -203,15 +181,6 @@ void activeScreen() {
          balls.addAll(newBalls);
          newBalls.clear();
      }
-
-  //delay (500); // TEMP to see new rows added
-  //if (addRow())
-  //  gameView = 2 ; //GAME OVER screen
-  
-  //else {
-  //  for (Brick b: bricks)
-  //   b.display();
-  //}
 }
 
 void gameOverScreen()  {
@@ -229,17 +198,19 @@ void keyPressed() { //TEMP restarts the game. We can have different actions impl
 /* TO BE DONE: 
   V add the strength counter in the middle of blocks
   V clean up stroke in all displays for map objects
-  - complete multiplier class
-  - tune color scheme if needed (now tweaked for 50 levels max red color)
-  - implement multiplier effect
+  V complete multiplier class
+  - tune color scheme if needed (now tweaked for 40 levels max red color)
+  V implement multiplier effect
   V adjust the startX to where the first ball drops
   V set x for all readyToLaunch balls to the global startX at the beginning of the launchScreen
   V randomize row creation
-  - tune gameplay with random elements
+  - tune gameplay balancing (difficulty) with random elements
   - implement "fast forward" button
   - add sound??
   - handle the case when gameover happens because a multiplier reached bottom screen
   - add animation to collect all balls to the startX position at the beginning of launchScreen
   - add animation for new balls when collected
   - add score on the top
+  - add score on Game Over
+  - add number of balls above the launch position in LAUNCH_SCREEN
  */
