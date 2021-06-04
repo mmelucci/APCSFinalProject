@@ -16,3 +16,11 @@ Philip added  methods in the Brick class and worked on the Multiplier class as w
 5/31/21
 Matt fixed the color intensity of the bricks so that the lighter green bricks are, the lower strength they have. Matt also implemented the launch of several balls. Matt then implemented the ball-brick collision such that the balls bounce off of bricks and walls.
                               //
+6/1/21
+Matt included a deActivate() method so that balls stop bouncing when they reach the bottom of the screen. He also modified move() and the active screen to display balls when inactive. Philip added text to display the strength of each brick on the bricks. Matt updated the development log on the Readme up to 5/31, and later added a basic automatic round loop so that the game progresses through rounds.
+                              //
+6/3/21
+Matt implemented a basic aim and shooting mechanism for the user to see where the balls will be launched. He then fixed the starting position for the balls for subsequent rounds so that all balls start launching from the position at which the first ball lands. Matt renamed the game views as constants for better readability and set all balls to startX for launch, along with fixing a bug with mousepressed. The bug involved the balls switching direction when the user pressed down on the mouse. Matt then fixed the stroke on bricks and balls and formed the random row creation at every round so that bricks are at random positions in the rows. He also fixed the display of brick strength so that the strength display appeared in the middle of the bricks and displayed the balls at launch point. Philip updated the colors so they are more similar to the actual game and added a display of multipliers along with the multiplier functionality.
+                              //
+6/4/21
+Matt completely updated the development log and made the game start with one ball. He also cleaned up old testing code for the demo branch that he created.
