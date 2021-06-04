@@ -71,11 +71,13 @@ void draw() {
 
 void mouseReleased() {
   //define angle from mouse position
-  float shootAngle = atan2(mouseY-(height-BALL_RADIUS), mouseX-startX);
-  for (Ball b: balls){ // set launch vector for all balls
+  if (gameView == LAUNCH_SCREEN) { // we don;t care about the mouse click if not in LAUNCH_SCREEN
+    float shootAngle = atan2(mouseY-(height-BALL_RADIUS), mouseX-startX);
+    for (Ball b: balls){ // set launch vector for all balls
       b.setLaunchVector(shootAngle, 10);
+    }
+    gameView = ACTIVE_SCREEN; // switch to game active screen that will launch and move the balls
   }
-  gameView = ACTIVE_SCREEN; // switch to game active screen that will launch and move the balls
 }
 
 
