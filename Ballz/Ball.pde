@@ -7,7 +7,7 @@ public class Ball {
 
   Ball(float initX){
     x = initX;
-    y = 790;
+    y = height - BALL_RADIUS;
     active = false;
     readyToLaunch = true;
   }
@@ -99,6 +99,7 @@ public class Ball {
   void readyToLaunch(){ // prepare the ball for launch
     readyToLaunch = true;
     x = startX;
+    y = height - BALL_RADIUS;
   }
 
 

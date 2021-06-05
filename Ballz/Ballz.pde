@@ -27,6 +27,7 @@ void setupGame() {
   newBalls=new ArrayList<Ball>();
   currentLevel=1;
   
+  noStroke(); // No border in bricks and multipliers
   addRow(); //add first row 
   
  // for (int i=0;i<1;i++){ //TEMP only for test. Scaled up tp 50+ balls with no lag! Will be 1 ball only at start once we have multipliers
@@ -68,11 +69,6 @@ boolean addRow() {
          } 
       }
   }
-    //for (int i=0;i<BRICKS_PER_ROW;i++){ //TBD this will have to randomly create the new row with a mix of bricks of different strength and some multiplier
-    //  Brick test=new Brick(1,i,(i+1)*5);
-    //  bricks.add(test);
-      
-    //}
   return false;
 }
 
@@ -118,9 +114,13 @@ void launchScreen() {
       b.readyToLaunch();
       b.display();
     }
+    textSize(10);
+    fill(255);
+    text(balls.size(), startX, height - 2*BALL_RADIUS);
+    
     firstBallDone = false; // start of the round, initialize first ball down flag that will determine next startX
     
-    framesToNextLaunch = 0; 
+    framesToNextLaunch = 0; // to time the launch of subsequent balls every BALLS_DELAY frames
  
     if (mousePressed == true){
       stroke(125);
