@@ -5,9 +5,9 @@ public class Ball {
   float dx,dy;
   boolean active, readyToLaunch;
 
-  Ball(float initX){
+  Ball(float initX, float initY){
     x = initX;
-    y = height - BALL_RADIUS;
+    y = initY;
     active = false;
     readyToLaunch = true;
   }
@@ -73,7 +73,10 @@ public class Ball {
         float MultiplierY = m.getY();
         
         if (dist (x,y,MultiplierX,MultiplierY)<BALL_RADIUS+BRICK_WIDTH/4) {// ball on the vertical of the brick
-                Ball newball= new Ball(width/2);
+                //Ball newball= new Ball(width/2, height - BALL_RADIUS);
+                Ball newball= new Ball(MultiplierX,MultiplierY);
+                newball.setLaunchVector(HALF_PI,20); // drop down fast
+                newball.activate();
                 balls.add(newball);
                 mmap.remove(i--);
            }

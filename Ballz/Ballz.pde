@@ -31,7 +31,7 @@ void setupGame() {
   addRow(); //add first row 
   
  // for (int i=0;i<1;i++){ //TEMP only for test. Scaled up tp 50+ balls with no lag! Will be 1 ball only at start once we have multipliers
-  Ball first=new Ball(startX);
+  Ball first=new Ball(startX, height - BALL_RADIUS);
   balls.add(first);
  // }
 }
@@ -165,6 +165,17 @@ void activeScreen() {
          b.checkCollision(bricks,mults,newBalls);
          b.display();
          anyBallActive = true;
+       }
+       else {
+         b.display();
+       }
+     }
+     
+     //Handle newly collected balls movement - they should drop to the bottom
+     for (Ball b: newBalls){
+       if (b.isActive()){ //move them down but with no collision detection
+         b.move();
+         b.display();
        }
        else {
          b.display();
