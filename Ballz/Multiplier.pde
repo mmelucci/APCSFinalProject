@@ -5,10 +5,13 @@ public class Multiplier {
    row=r;
    col=c;
   }
-void advance(){
-  //moves multiplier down by one row when the ball reaches the botttom
+  
+  boolean advance(){
+  //moves multiplier down by one row and return true if it reached bottom
   row++;
+  return row>=NUM_ROWS;
   }
+  
   float getX() {
     return width/BRICKS_PER_ROW*col+BRICK_GAP+BRICK_WIDTH/2;
   }
@@ -16,6 +19,7 @@ void advance(){
   float getY() {
     return width/BRICKS_PER_ROW*row+BRICK_GAP+BRICK_WIDTH/2;
   }
+  
   void display () {//Display a multiplier at the center of the square at col, row
      fill(255);
     ellipse (getX(),getY(),BRICK_WIDTH/2,BRICK_WIDTH/2);

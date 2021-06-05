@@ -38,19 +38,19 @@ void setupGame() {
 
 /* Shifts all bricks down one row, adds a row or random bricks at row 1. The strength of the bricks created should be >= level
  Maybe we do half of them with strength = level and half of them with random strength up to (level + number of balls). TBD
- returns true if there is at least one brick on the last row (row 9) which triggers game over in the caller
+ returns true if there is at least one brick or one multiplier on the last row (row 9) which triggers game over in the caller
  */
 boolean addRow() {
   //Moves down bricks and multipliers. Return true if game over
   for (Brick b: bricks)
     if (b.advance())
-    return true;
-  for (Multiplier m:mults){
-    m.advance();
-  }
-   
-   
-  for (int i=0;i<BRICKS_PER_ROW;i++){ //randomly create the new row with a mix of bricks of different strength and some multiplier
+      return true;
+  for (Multiplier m:mults)
+    if (m.advance())
+      return true;
+  
+  //randomly create the new row with a mix of bricks of different strength and some multiplier
+  for (int i=0;i<BRICKS_PER_ROW;i++){ 
       float r = random(1);
       Brick newBrick;
       if (r<BRICKS_DENSITY) { // place a brick
@@ -219,10 +219,12 @@ void keyPressed() { //TEMP restarts the game. We can have different actions impl
   - tune gameplay balancing (difficulty) with random elements
   - implement "fast forward" button
   - add sound??
-  - handle the case when gameover happens because a multiplier reached bottom screen
+  V handle the case when gameover happens because a multiplier reached bottom screen
   - add animation to collect all balls to the startX position at the beginning of launchScreen
-  - add animation for new balls when collected
+  V add animation for new balls when collected
   - add score on the top
   - add score on Game Over
-  - add number of balls above the launch position in LAUNCH_SCREEN
+  V add number of balls above the launch position in LAUNCH_SCREEN
+  - modify multiplier shape (like real game)
+  - 
  */
