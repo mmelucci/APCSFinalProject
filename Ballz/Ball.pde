@@ -39,11 +39,17 @@ public class Ball {
         float brickY = b.getY();
         
         if ((brickX < x) && (x < brickX+BRICK_WIDTH)) {// ball on the vertical of the brick
-           if ((abs(y-brickY)<BALL_RADIUS) || //collision on top edge OR
-               (abs(brickY+BRICK_WIDTH - y) < BALL_RADIUS)){  // collision on bottom edge
-             dy*= -1; //revert vertical component of velocity to bounce off
-             if (b.hit()) //update brick with hit and remove from map if done
-                bmap.remove(i--);
+           if (abs(y-brickY)<BALL_RADIUS) { //collision on top edge 
+               y-= 2*BALL_RADIUS; // to bounce off and avoid contonuous hit when running parallel to edge
+               dy*= -1; //revert vertical component of velocity to bounce off
+               if (b.hit()) //update brick with hit and remove from map if done
+                  bmap.remove(i--);
+           }
+           else if (abs(brickY+BRICK_WIDTH - y) < BALL_RADIUS){  // collision on bottom edge
+               y+= 2*BALL_RADIUS; // to bounce off and avoid contonuous hit when running parallel to edge
+               dy*= -1; //revert vertical component of velocity to bounce off
+               if (b.hit()) //update brick with hit and remove from map if done
+                  bmap.remove(i--);
            }
         }
         if ((brickY < y) && (y < brickY+BRICK_WIDTH)) {// ball on the horizontal of the brick

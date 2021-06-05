@@ -191,6 +191,7 @@ void gameOverScreen()  {
 void keyPressed() { //TEMP restarts the game. We can have different actions implemented later: e.g. speed up, restart
   if (keyCode == 32){
     setup();
+    gameView=LAUNCH_SCREEN;
   }
 }
 
