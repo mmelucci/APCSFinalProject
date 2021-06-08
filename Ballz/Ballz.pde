@@ -198,7 +198,7 @@ void gameOverScreen()  {
   textSize(45);
   text("Game Over",150,400);
   textSize(30);
-  text("Score: ",150, 450);
+  text("Score: " + currentLevel,150, 450);
 }
 
 void keyPressed() { //TEMP restarts the game. We can have different actions implemented later: e.g. speed up, restart
