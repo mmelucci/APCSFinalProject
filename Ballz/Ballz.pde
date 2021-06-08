@@ -103,6 +103,8 @@ void mouseReleased() {
 
 
 void launchScreen() {
+    textSize(30);
+    text("Score: " + currentLevel, 225,50);
     // Build Map with current bricks and ball multipliers
     for (Brick b: bricks)
          b.display();
@@ -136,7 +138,8 @@ void activeScreen() {
    triggers launchScreen()
    */
   boolean anyBallActive = false; //to keep track if we still have any balls running on the round
-  
+  textSize(30);
+  text("Score: " + currentLevel, 225,50);
   //Draw current map of bricks and multipliers
      for (Brick b: bricks)
        b.display();
@@ -225,7 +228,7 @@ void keyPressed() { //TEMP restarts the game. We can have different actions impl
   - add animation to collect all balls to the startX position at the beginning of launchScreen
   V add animation for new balls when collected
   - add score on the top
-  - add score on Game Over
+  V add score on Game Over
   V add number of balls above the launch position in LAUNCH_SCREEN
   - modify multiplier shape (like real game)
   - 
