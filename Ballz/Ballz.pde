@@ -227,7 +227,7 @@ void keyPressed() { //TEMP restarts the game. We can have different actions impl
   V handle the case when gameover happens because a multiplier reached bottom screen
   - add animation to collect all balls to the startX position at the beginning of launchScreen
   V add animation for new balls when collected
-  - add score on the top
+  V add score on the top
   V add score on Game Over
   V add number of balls above the launch position in LAUNCH_SCREEN
   - modify multiplier shape (like real game)
