@@ -216,7 +216,7 @@ void keyPressed() { //TEMP restarts the game. We can have different actions impl
 }
 
 
-/* TO BE DONE: 
+/* TO BE (HAS BEEN) DONE: 
   V add the strength counter in the middle of blocks
   V clean up stroke in all displays for map objects
   V complete multiplier class
@@ -226,9 +226,7 @@ void keyPressed() { //TEMP restarts the game. We can have different actions impl
   V set x for all readyToLaunch balls to the global startX at the beginning of the launchScreen
   V randomize row creation
   V tune gameplay balancing (difficulty) with random elements
-  - implement "fast forward" button
   V handle the case when gameover happens because a multiplier reached bottom screen
-  - add animation to collect all balls to the startX position at the beginning of launchScreen
   V add animation for new balls when collected
   V add score on the top
   V add score on Game Over
