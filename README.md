@@ -27,3 +27,15 @@ Matt implemented a basic aim and shooting mechanism for the user to see where th
                               //
 6/4/21
 Matt completely updated the development log and made the game start with one ball. He also cleaned up old testing code for the demo branch that he created.
+                              //
+6/5/21
+Matt modified collision to improve the bouncing of balls along the edges of bricks. He also allowed for the space bar to restart the game both during the game and after the game has ended. Matt included a ball count display and aligned the y-position for balls that are ready to launch. He also added a new animation for newly collected balls that drop down when multipliers are hit by a ball. Finally, Matt dealt with a special case in which game over is triggered by a multiplier rather than a brick.
+                              //
+6/8/21
+Matt set up the basic score display for the game over screen. He also included an accurate score display on the game over screen using the currentLevel variable as a counter. He then completed the score display for activeScreen and launchScreen views, displaying the score at the top of the display. Matt created a short slide deck in preparation for presentations.
+                              //
+6/10/21
+Matt and Philip presented in class. Matt shared the demonstration of Ballz and described the game along with Philip to the class. Matt then went over the Ballz and Ball classes shown in the UML diagram while Philip reviewed the Multiplier and Brick classes in the UML diagram.
+                              //
+6/11/21
+Matt and Philip decided to put screenshots of their conversations on iMessages onto Rocket Chat in their group chat to show the communication they had throughout the project. Matt sent the 19 screenshots of discussion into the chat. Matt then made changes in the to-do list, updated links in the README.md file according to instructions, and updated the goals on the prototype document.
