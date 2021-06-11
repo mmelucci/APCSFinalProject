@@ -105,6 +105,10 @@ void mouseReleased() {
 void launchScreen() {
     textSize(30);
     text("Score: " + currentLevel, 225,50);
+    if (currentLevel == 1) {
+      textSize(10);
+      text("(Press SPACEBAR to restart)", 25,50);
+    }
     // Build Map with current bricks and ball multipliers
     for (Brick b: bricks)
          b.display();
