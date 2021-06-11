@@ -40,13 +40,13 @@ public class Ball {
         
         if ((brickX < x) && (x < brickX+BRICK_WIDTH)) {// ball on the vertical of the brick
            if (abs(y-brickY)<BALL_RADIUS) { //collision on top edge 
-               y-= BALL_RADIUS; // to bounce off and avoid continuous hit when running parallel to edge
+               y-= BALL_RADIUS/3; // to bounce off and avoid continuous hit when running parallel to edge
                dy*= -1; //revert vertical component of velocity to bounce off
                if (b.hit()) //update brick with hit and remove from map if done
                   bmap.remove(i--);
            }
            else if (abs(brickY+BRICK_WIDTH - y) < BALL_RADIUS){  // collision on bottom edge
-               y+= BALL_RADIUS; // to bounce off and avoid continuous hit when running parallel to edge
+               y+= BALL_RADIUS/3; // to bounce off and avoid continuous hit when running parallel to edge
                dy*= -1; //revert vertical component of velocity to bounce off
                if (b.hit()) //update brick with hit and remove from map if done
                   bmap.remove(i--);
@@ -54,13 +54,13 @@ public class Ball {
         }
         if ((brickY < y) && (y < brickY+BRICK_WIDTH)) {// ball on the horizontal of the brick
            if (abs(x-brickX)<BALL_RADIUS) {//collision on left edge 
-             x-= BALL_RADIUS;// to bounce off and avoid continuous hit when running parallel to edge
+             x-= BALL_RADIUS/3;// to bounce off and avoid continuous hit when running parallel to edge
              dx*= -1; //revert horizontal component of velocity to bounce off
              if (b.hit()) //update brick with hit and remove from map if done
                 bmap.remove(i--);
            }
            else if (abs(brickX+BRICK_WIDTH - x) < BALL_RADIUS){  // collision on right edge
-             x+= BALL_RADIUS;// to bounce off and avoid continuous hit when running parallel to edge
+             x+= BALL_RADIUS/3;// to bounce off and avoid continuous hit when running parallel to edge
              dx*= -1; //revert horizontal component of velocity to bounce off
              if (b.hit()) //update brick with hit and remove from map if done
                 bmap.remove(i--);
