@@ -3,6 +3,9 @@
 2. Matt Melucci and Philip Von Mueffling
 3. A fast-paced physics-based game where the player shoots a blast of small balls against a construction of bricks of different strengths. Bricks may require 1-100s of hits to get destroyed, with one shot per level. At every round, the bricks lower down one block, a new row is added at the top with strength >= level, and you lose if they reach the bottom. Some balls’ multipliers are placed so that when you hit them you increase the number of  balls for the next round.
 4. Link to Prototype: https://docs.google.com/document/d/1h-q0VrV6gP10E9peiE5OlBkTiR4WUhYHEUUotGIDdRo/edit?usp=sharing
+Link to Updated UML Diagram: https://lucid.app/lucidchart/invitations/accept/inv_ddc8aaac-f8ee-4704-97c9-69f189b17dd9 (JPG available in prototype linked above)
+Link to In-class Demo Presentation: https://docs.google.com/presentation/d/1hopDZ69Swyy_nmSQdNZPSsiXaiQ41YEByGKbUI9YN-4/edit?usp=sharing
+5. Compile/Run Instructions: Load the Ballz folder and run from Processing
 5. Development Log:
 5/26
 Matt created the classes, instance variables, and method headers, along with comments on each method and the specifics of their function. Also, structured the main game view with the number of bricks and displayed a map filled with bricks as a basic template. Philip created and finished brick class working with the outline, using final variables so that we do not have to tediously change all of the values if we decided to change our max strength etc.
