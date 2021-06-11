@@ -216,20 +216,17 @@ void keyPressed() { //TEMP restarts the game. We can have different actions impl
   V add the strength counter in the middle of blocks
   V clean up stroke in all displays for map objects
   V complete multiplier class
-  - tune color scheme if needed (now tweaked for 40 levels max red color)
+  V tune color scheme if needed (now tweaked for 40 levels max red color)
   V implement multiplier effect
   V adjust the startX to where the first ball drops
   V set x for all readyToLaunch balls to the global startX at the beginning of the launchScreen
   V randomize row creation
-  - tune gameplay balancing (difficulty) with random elements
+  V tune gameplay balancing (difficulty) with random elements
   - implement "fast forward" button
-  - add sound??
   V handle the case when gameover happens because a multiplier reached bottom screen
   - add animation to collect all balls to the startX position at the beginning of launchScreen
   V add animation for new balls when collected
   V add score on the top
   V add score on Game Over
   V add number of balls above the launch position in LAUNCH_SCREEN
-  - modify multiplier shape (like real game)
-  - 
  */
